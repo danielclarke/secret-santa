@@ -4,6 +4,7 @@ import csv
 import random
 import os
 import string
+import sys
 
 class Santa:
     def __init__(self, name, giftee, family, exclusions):
@@ -85,12 +86,12 @@ def check_santas(santas, families):
             break
 
 def main():
-    santas = assign_santas(read_families('families'))
+    santas = assign_santas(read_families(sys.argv[1]))
     f = open("santas_list.txt", "w")
     for s in santas.items():
         f.write(string.capwords(s[0]) + " is a Santa for " + string.capwords(s[1]))
         f.write("\n")
-    check_santas(santas, read_families('families'))
+    check_santas(santas, read_families(sys.argv[1]))
 
 if __name__ == '__main__':
     main()
